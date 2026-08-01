@@ -3,7 +3,7 @@ import os
 
 # Define the base directory and file path for the common passwords list
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(BASE_DIR, 'weakpass_4.merged.txt')
+file_path = os.path.join(BASE_DIR, 'weakpass.txt')
 
 password = input("Enter your password: ")
 
@@ -26,11 +26,11 @@ strength_score = 0
 
 # Reads common passwords from the txt file, If file not found, error message is printed and common_pass is initialized as an empty list to avoid program termination and still perform other functions of the password checker despite of it
 try:
-    with open(file_path, 'r') as f:
+    with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
         common_pass = f.read().splitlines()
 except FileNotFoundError:
-    print("The file 'weakpass_4.merged.txt' was not found. Please ensure the file exists in the same directory as this script.")
-    common_pass = []    
+    print("The file 'weakpass.txt' was not found. Please ensure the file exists in the same directory as this script.")
+    common_pass = []  
 
 # Initializes if password inputted is found in common passwords list via the weakpass_4.merged.txt file, which contains a list of common passwords that are easily guessed by hackers.
 if password in common_pass:
